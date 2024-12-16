@@ -127,30 +127,14 @@
                 </div>
                 @for ($i = 0; $i < 3; $i++)
                     <div class="mt-6 mb-5 flex items-center">
-                        <div class="mr-4">
-                            <img src="https://images.narasi.tv/preset:sharp/resize:fill:658:365:1/gravity:ce/plain/https://storage.googleapis.com/narasi-production.appspot.com/production/medium/1732263665255/mantan-menlu-retno-marsudi-bergabung-dengan-gurn-energy-sebagai-direktur-medium.jpg@webp"
-                                class="w-48 h-20 rounded-lg object-cover">
+                        <div class="mr-4 flex-shrink-0">
+                            <img src="https://tangerangupdate.com/wp-content/uploads/2024/08/Foto-website_20240810_065747_0000.png"
+                                class="md:w-48 w-28 h-auto rounded-lg ">
                         </div>
                         <div class="">
 
                             <h1 class="md:text-xl text-sm font-medium w-full">
-                                Es Abadi di Pegunungan Jayawijaya Menyusut, Ini Laporan BMKG
-                            </h1>
-                            <div class="flex mt-2 ">
-                                <p class=" text-sm text-primary">TANGERANG RAYA</p>
-                                {{-- <p class=" text-sm text-gray-400 ml-3">10 November 2024</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 mb-5 flex items-center">
-                        <div class="mr-4">
-                            <img src="https://images.narasi.tv/preset:sharp/resize:fill:658:365:1/gravity:ce/plain/https://storage.googleapis.com/narasi-production.appspot.com/production/medium/1733110360835/lirik-dan-makna-lagu-december-neck-deep-patah-hati-dan-akhir-tahun-yang-sepi-medium.png@webp"
-                                class="w-48 h-20 rounded-lg object-cover">
-                        </div>
-                        <div class="">
-
-                            <h1 class="md:text-xl text-sm font-medium w-full">
-                                Es Abadi di Pegunungan Jayawijaya Menyusut, Ini Laporan BMKG
+                                Pertamina Resmi Turunkan Harga BBM Non-Subsidi per 1 Oktober 2024 di Seluruh Indonesia
                             </h1>
                             <div class="flex mt-2 ">
                                 <p class="text-xs md:text-sm text-primary">TANGERANG RAYA</p>
@@ -169,7 +153,7 @@
                     </div>
                     <div class="mt-2">
                         @for ($i = 1; $i < 7; $i++)
-                            <a href="/" class="flex items-center mt-5">
+                            <a href="/detail" class="flex items-center mt-5">
                                 <div class="text-2xl font-bold text-primary mr-3">
                                     {{ $i }}
                                 </div>
