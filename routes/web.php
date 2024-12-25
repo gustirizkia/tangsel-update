@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/detail', function () {
     return view('detail');
 });
+
+Route::get('/not-found', function () {
+    return view('404');
+});
