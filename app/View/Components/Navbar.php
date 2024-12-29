@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\ArtikelKategori;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,11 @@ class Navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navbar');
+        $kategori_artikel_navbar = ArtikelKategori::orderBy("nama", "asc")
+            ->where("parent_id", null)
+            ->with("child")
+            ->get();
+
+        return view('components.navbar', compact("kategori_artikel_navbar"));
     }
 }

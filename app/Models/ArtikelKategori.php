@@ -21,6 +21,11 @@ class ArtikelKategori extends Model
         return $this->hasMany(ArtikelKategori::class, "parent_id", "id");
     }
 
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class, "kategori_id", "id");
+    }
+
     public static function boot()
     {
         parent::boot();

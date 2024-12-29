@@ -2,7 +2,13 @@
 
 @section('content')
     <div class="md:px-60 px-3 mt-4 pb-20">
-        <div class="grid grid-flow-row grid-cols-12 gap-6">
+        {{-- Banner promo --}}
+        <div class="my-6 ">
+            <img src="https://storage.nu.or.id/storage/banners/img-20241126-wa0027_1732637812.webp"
+                class="w-full h-auto rounded" alt="">
+        </div>
+        {{-- Banner promo end --}}
+        <div class="grid grid-flow-row grid-cols-12 gap-6 mb-6">
             <div class="md:col-span-7 col-span-12">
                 {{-- Carousel --}}
                 <div id="default-carousel" class="relative w-full h-full" data-carousel="slide">
@@ -109,12 +115,7 @@
             </div>
         </div>
 
-        {{-- Banner promo --}}
-        <div class="my-6 md:px-24">
-            <img src="https://storage.nu.or.id/storage/banners/img-20241126-wa0027_1732637812.webp"
-                class="w-full h-auto rounded" alt="">
-        </div>
-        {{-- Banner promo end --}}
+
 
         {{-- Terkini  --}}
 
@@ -125,44 +126,47 @@
                         TERKINI
                     </div>
                 </div>
-                @for ($i = 0; $i < 3; $i++)
-                    <div class="mt-6 mb-5 flex items-center">
+                @foreach ($terkini as $item)
+                    <a href="{{ route('artikel-show', $item->slug) }}" class="mt-6 mb-5 flex items-center">
                         <div class="mr-4 flex-shrink-0">
-                            <img src="https://tangerangupdate.com/wp-content/uploads/2024/08/Foto-website_20240810_065747_0000.png"
-                                class="md:w-48 w-28 h-auto rounded-lg ">
+                            <img src="{{ url('storage') }}/{{ $item->image }}" class="md:w-48 w-28 h-auto rounded-lg ">
                         </div>
                         <div class="">
 
                             <h1 class="md:text-xl text-sm font-medium w-full">
-                                Pertamina Resmi Turunkan Harga BBM Non-Subsidi per 1 Oktober 2024 di Seluruh Indonesia
+                                {{ $item->nama }}
                             </h1>
                             <div class="flex mt-2 ">
-                                <p class="text-xs md:text-sm text-primary">TANGERANG RAYA</p>
+                                <p class="text-xs md:text-sm text-primary">
+                                    {{ $item->kategori->nama }}
+                                </p>
                                 {{-- <p class="text-xs md:text-sm text-gray-400 ml-3">10 November 2024</p> --}}
                             </div>
                         </div>
-                    </div>
-                @endfor
+                    </a>
+                @endforeach
+
             </div>
             <div class="md:col-span-4 col-span-12">
                 <div class="border p-4 rounded-md">
                     <div class=" border-l-4 border-primary pl-3">
                         <div class="font-semibold text-primary text-lg ">
-                            NASIONAL
+                            {{ $firstKategori->nama }}
                         </div>
                     </div>
                     <div class="mt-2">
-                        @for ($i = 1; $i < 7; $i++)
-                            <a href="/detail" class="flex items-center mt-5">
+                        @foreach ($firstArtikel as $index => $item)
+                            <a href="{{ route('artikel-show', $item->slug) }}" class="flex items-center mt-5">
                                 <div class="text-2xl font-bold text-primary mr-3">
-                                    {{ $i }}
+                                    {{ $index + 1 }}
                                 </div>
                                 <div class="text-sm font-medium">
-                                    Rafael Alun Trisambodo Ayah dari Mario Dandy Resmi Ditahan Atas Dugaan Gratifikasi
+                                    {{ $item->nama }}
                                 </div>
 
                             </a>
-                        @endfor
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -172,26 +176,26 @@
         {{-- carousel --}}
         <div class=" border-l-4 border-primary pl-3 mt-5">
             <div class="font-semibold text-primary text-2xl ">
-                OPINI
+                {{ $lastKategori->nama }}
             </div>
         </div>
         <div class="overflow-x-auto mt-5 ">
             <div class="flex gap-4  w-full flex-shrink-0 pb-3">
-                @for ($i = 0; $i < 8; $i++)
-                    <div class="w-36 md:w-64 shrink-0">
-                        <img class="w-full inline-block h-auto object-cover rounded-lg"
-                            src="https://images.narasi.tv/preset:sharp/resize:fill:658:365:1/gravity:ce/plain/https://storage.googleapis.com/narasi-production.appspot.com/production/medium/1732704399662/dedi-mulyadi-sebut-hasil-quick-count-pilkada-jabar-2024-masih-di-bawah-ekspektasi-meski-unggul-jauh-medium.jpg@webp">
+                @foreach ($lastArtikel as $item)
+                    <a href="{{ route('artikel-show', $item->slug) }}" class="w-36 md:w-64 shrink-0">
+                        <img class="w-full inline-block h-auto object-cover rounded-lg" src="/storage/{{ $item->image }}">
                         <div class="">
                         </div>
                         <p class="text-primary text-xs my-2">
-                            Nasional
+                            {{ $item->kategori->nama }}
                         </p>
                         <h1 class="md:font-medium font-semibold text-xs md:text-sm">
-                            Dedi Mulyadi Sebut Hasil Quick Count Pilkada Jabar 2024
+                            {{ $item->nama }}
                         </h1>
 
-                    </div>
-                @endfor
+                    </a>
+                @endforeach
+
             </div>
 
         </div>

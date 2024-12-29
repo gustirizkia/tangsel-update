@@ -53,7 +53,7 @@ class SeederArtikel extends Seeder
                 "nama" => $faker->sentence($nbWords = 8, $variableNbWords = true),
                 "kategori_id" => $kategori_random->id,
                 "keyword" => $faker->sentence($nbWords = 16, $variableNbWords = true),
-                "content" => $faker->sentence($nbWords = 60, $variableNbWords = true),
+                "content" => $faker->sentence($nbWords = 300, $variableNbWords = true),
                 "image" => $artikel->image
             ]);
         }
