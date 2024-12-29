@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ $artikel->nama }}
+@endsection
+
 @push('head_tag')
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ $artikel->nama }}" />
