@@ -1,5 +1,27 @@
 @extends('layouts.app')
 
+@push('head_tag')
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="{{ $artikel->nama }}" />
+    <meta name="description" content="{{ $artikel->keyword }}" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:title" content="TANGSEL UPDATE" />
+    <meta property="og:description" content="{{ $artikel->keyword }}" />
+    <meta property="og:image" content="{{ url('storage/') . "/$artikel->image" }}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ url('/') }}" />
+    <meta property="twitter:title" content="TANGSEL UPDATE" />
+    <meta property="twitter:description" content="{{ $artikel->keyword }}" />
+    <meta property="twitter:image" content="{{ url('storage/') . "/$artikel->image" }}" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+@endpush
+
 @section('content')
     <div class="md:px-60 px-3 py-7">
         <div class="md:flex gap-6">

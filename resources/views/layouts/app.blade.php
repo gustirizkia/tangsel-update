@@ -5,6 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tangsel Update</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="TANGSEL UPDATE" />
+    <meta name="description"
+        content="Tangsel Update
+Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:title" content="TANGSEL UPDATE" />
+    <meta property="og:description"
+        content="Tangsel Update
+Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
+    <meta property="og:image" content="{{ asset('assets/images/logo.jpg') }}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ url('/') }}" />
+    <meta property="twitter:title" content="TANGSEL UPDATE" />
+    <meta property="twitter:description"
+        content="Tangsel Update
+Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.jpg') }}" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+
+    @stack('head_tag')
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
