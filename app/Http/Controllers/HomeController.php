@@ -15,6 +15,7 @@ class HomeController extends Controller
         $firstKategori = ArtikelKategori::orderBy("id", "asc")
             ->has("artikel")
             ->first();
+
         $firstArtikel = Artikel::where("kategori_id", $firstKategori->id)->limit(8)->get();
 
         $lastKategori = ArtikelKategori::orderBy("id", "desc")

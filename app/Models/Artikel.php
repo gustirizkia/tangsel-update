@@ -12,6 +12,13 @@ class Artikel extends Model
 
     protected $hidden = ["id", "kategori_id"];
 
+    protected $appends = ["url_image"];
+
+    public function getUrlImageAttribute()
+    {
+        return url("storage/$this->image");
+    }
+
     public function kategori()
     {
         return $this->belongsTo(ArtikelKategori::class, "kategori_id", "id");
