@@ -116,7 +116,7 @@
                     </div>
                     <div class="mt-2">
                         @foreach ($artikelLainnya as $item)
-                            <a href="" class="flex items-center gap-3 mt-5">
+                            <a href="{{ route('artikel-show', $item->slug) }}" class="flex items-center gap-3 mt-5">
                                 <div class="flex-shrink-0">
                                     <img src="{{ asset("storage/$item->image") }}"
                                         class="md:w-32 md:h-auto h-20 w-20 object-cover rounded" alt="">
@@ -169,6 +169,7 @@
                     data.data.forEach(element => {
                         tagHtml += `
                             <div class="w-36 md:w-64 shrink-0">
+                            <a href="{{ url('artikel') }}/${element.slug}">
                                 <img class="w-full inline-block h-auto object-cover rounded-lg"
                                     src="{{ url('storage') }}/${element.image}">
                                 <div class="">
@@ -179,6 +180,7 @@
                                 <h1 class="md:font-medium font-semibold text-xs md:text-sm">
                                     ${element.nama}
                                 </h1>
+                            </a>
 
                             </div>
 
