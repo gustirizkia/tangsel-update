@@ -32,8 +32,13 @@ class ArtikelController extends Controller
         $artikel = Artikel::where("slug", $slug)->firstOrFail();
         $artikel->tanggal = Carbon::parse($artikel->created_at)->format("d M Y");
 
+        $artikelLainnya = Artikel::where("id", "!=", $artikel->id)
+            ->orderBy("created_at", "desc")
+            ->limit(10)->get();
+
         return view("detail", [
-            'artikel' => $artikel
+            'artikel' => $artikel,
+            "artikelLainnya" => $artikelLainnya
         ]);
     }
 }

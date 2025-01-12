@@ -110,59 +110,41 @@
             <div class="md:w-[40%] md:mt-0 mt-6">
                 <div class="border p-4 rounded-md">
                     <div class=" border-l-4 border-primary pl-3">
-                        <div class="font-semibold text-primary text-lg ">
-                            TERPOPULER
+                        <div class="font-semibold text-primary text-lg uppercase ">
+                            Artikel Lainnya
                         </div>
                     </div>
                     <div class="mt-2">
-                        @for ($i = 1; $i < 7; $i++)
+                        @foreach ($artikelLainnya as $item)
                             <a href="" class="flex items-center gap-3 mt-5">
                                 <div class="flex-shrink-0">
-                                    <img src="https://tangerangupdate.com/wp-content/uploads/2024/11/Foto-website_20241128_140901_0000.png"
+                                    <img src="{{ asset("storage/$item->image") }}"
                                         class="md:w-32 md:h-auto h-20 w-20 object-cover rounded" alt="">
                                 </div>
                                 <div class="">
                                     <div class="md:text-sm text-xs font-medium">
-                                        Rafael Alun Trisambodo Ayah dari Mario Dandy Resmi Ditahan Atas Dugaan Gratifikasi
+                                        {{ $item->nama }}
                                     </div>
-                                    <div class="flex gap-2 mt-2 items-center">
+                                    <div class="flex gap-2 mt-2 items-center ">
                                         <div class="text-xs text-primary">
-                                            NASIONAL
+                                            {{ $item->kategori->nama }}
                                         </div>
                                         <div class="">
                                             |
                                         </div>
                                         <div class="text-xs text-gray-400">
-                                            22 Oktober 2024
+                                            {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
                                         </div>
                                     </div>
                                 </div>
 
                             </a>
-                        @endfor
+                        @endforeach
+
                     </div>
                 </div>
 
-                <div class="border p-4 rounded-md mt-4">
-                    <div class=" border-l-4 border-primary pl-3">
-                        <div class="font-semibold text-primary text-lg ">
-                            NASIONAL
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        @for ($i = 1; $i < 7; $i++)
-                            <a href="/" class="flex items-center mt-5">
-                                <div class="text-2xl font-bold text-primary mr-3">
-                                    {{ $i }}
-                                </div>
-                                <div class="text-sm font-medium">
-                                    Rafael Alun Trisambodo Ayah dari Mario Dandy Resmi Ditahan Atas Dugaan Gratifikasi
-                                </div>
 
-                            </a>
-                        @endfor
-                    </div>
-                </div>
             </div>
         </div>
 
