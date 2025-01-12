@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ url('/') }}" />
-    <meta property="og:title" content="TANGSEL UPDATE" />
+    <meta property="og:title" content="{{ $artikel->nama }}" />
     <meta property="og:description" content="{{ $artikel->keyword }}" />
     <meta property="og:image" content="{{ url('storage/') . "/$artikel->image" }}" />
 
