@@ -16,31 +16,31 @@ class SeederArtikel extends Seeder
     public function run(): void
     {
 
-        ArtikelKategori::where("id", ">", 0)->delete();
+        // ArtikelKategori::where("id", ">", 0)->delete();
 
-        $kategori = ArtikelKategori::create([
-            'nama' => "Tangerang Raya"
-        ]);
-        $kategori = ArtikelKategori::create([
-            'nama' => "Nasional"
-        ]);
-        $kategori = ArtikelKategori::create([
-            'nama' => "Metropolitan"
-        ]);
-        $kategori = ArtikelKategori::create([
-            'nama' => "Olahraga"
-        ]);
-        $kategori = ArtikelKategori::create([
-            'nama' => "Sejarah"
-        ]);
-        $kategori1 = ArtikelKategori::create([
-            'nama' => "Banten",
-            "parent_id" => $kategori->id
-        ]);
-        $kategori = ArtikelKategori::create([
-            'nama' => "Tangerang",
-            "parent_id" => $kategori->id
-        ]);
+        // $kategori = ArtikelKategori::create([
+        //     'nama' => "Tangerang Raya"
+        // ]);
+        // $kategori = ArtikelKategori::create([
+        //     'nama' => "Nasional"
+        // ]);
+        // $kategori = ArtikelKategori::create([
+        //     'nama' => "Metropolitan"
+        // ]);
+        // $kategori = ArtikelKategori::create([
+        //     'nama' => "Olahraga"
+        // ]);
+        // $kategori = ArtikelKategori::create([
+        //     'nama' => "Sejarah"
+        // ]);
+        // $kategori1 = ArtikelKategori::create([
+        //     'nama' => "Banten",
+        //     "parent_id" => $kategori->id
+        // ]);
+        // $kategori = ArtikelKategori::create([
+        //     'nama' => "Tangerang",
+        //     "parent_id" => $kategori->id
+        // ]);
 
         $artikel = Artikel::first();
 
@@ -52,8 +52,8 @@ class SeederArtikel extends Seeder
             $insert = Artikel::create([
                 "nama" => $faker->sentence($nbWords = 8, $variableNbWords = true),
                 "kategori_id" => $kategori_random->id,
-                "keyword" => $faker->sentence($nbWords = 16, $variableNbWords = true),
-                "content" => $faker->sentence($nbWords = 300, $variableNbWords = true),
+                "keyword" => $faker->sentence($nbWords = 18, $variableNbWords = true),
+                "content" => $faker->sentence($nbWords = 500, $variableNbWords = true),
                 "image" => $artikel->image
             ]);
         }
