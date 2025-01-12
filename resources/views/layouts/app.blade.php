@@ -8,31 +8,9 @@
         @yield('title', 'Tangsel Update')
     </title>
 
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="TANGSEL UPDATE" />
-    <meta name="description"
-        content="Tangsel Update
-Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ url('/') }}" />
-    <meta property="og:title" content="TANGSEL UPDATE" />
-    <meta property="og:description"
-        content="Tangsel Update
-Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
-    <meta property="og:image" content="{{ asset('assets/images/logo.jpg') }}" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="{{ url('/') }}" />
-    <meta property="twitter:title" content="TANGSEL UPDATE" />
-    <meta property="twitter:description"
-        content="Tangsel Update
-Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
-    <meta property="twitter:image" content="{{ asset('assets/images/logo.jpg') }}" />
-
-    <!-- Meta Tags Generated with https://metatags.io -->
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
 
     @stack('head_tag')
 

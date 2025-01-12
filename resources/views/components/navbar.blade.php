@@ -14,7 +14,7 @@
             class="flex items-center font-bold text-sm  text-black dark:text-white whitespace-nowrap uppercase h-full {{ request()->is('/') ? 'border-b-2 text-primary border-primary' : '' }}">
             HOME
         </a>
-        @foreach ($kategori_artikel_navbar as $item_kategori_artikel_nav)
+        @foreach ($kategori_artikel_navbar as $idxKategori => $item_kategori_artikel_nav)
             @if (!count($item_kategori_artikel_nav->child))
                 <a href="{{ route('kategori-artikel', $item_kategori_artikel_nav->slug) }}"
                     class="flex items-center font-bold text-sm  text-black dark:text-white whitespace-nowrap uppercase h-full {{ request()->is("kategori/$item_kategori_artikel_nav->slug") ? 'border-b-2 text-primary border-primary' : '' }}">
@@ -22,7 +22,7 @@
                 </a>
             @else
                 {{-- Dropdown --}}
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                <button id="dropdownDefaultButton{{ $idxKategori }}" data-dropdown-toggle="dropdown"
                     class="text-center inline-flex items-center font-bold text-sm  text-black dark:text-white whitespace-nowrap uppercase h-full"
                     type="button">{{ $item_kategori_artikel_nav->nama }}
                     <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -35,7 +35,7 @@
                 <div id="dropdown"
                     class="z-50 relative hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 z-50 relative"
-                        aria-labelledby="dropdownDefaultButton">
+                        aria-labelledby="dropdownDefaultButton{{ $idxKategori }}">
                         @foreach ($item_kategori_artikel_nav->child as $item)
                             <li>
                                 <a href="#"

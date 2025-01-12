@@ -1,5 +1,34 @@
 @extends('layouts.app')
 
+
+@push('head_tag')
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="TANGSEL UPDATE" />
+    <meta name="description"
+        content="Tangsel Update
+Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:title" content="TANGSEL UPDATE" />
+    <meta property="og:description"
+        content="Tangsel Update
+Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
+    <meta property="og:image" content="{{ asset('assets/images/logo.jpg') }}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ url('/') }}" />
+    <meta property="twitter:title" content="TANGSEL UPDATE" />
+    <meta property="twitter:description"
+        content="Tangsel Update
+Platform portal berita yang menghadirkan informasi terkini dan terpercaya untuk masyarakat Tangerang Selatan." />
+    <meta property="twitter:image" content="{{ asset('assets/images/logo.jpg') }}" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+@endpush
+
 @section('content')
     <div class="md:px-60 px-3 mt-4 pb-20">
         {{-- Banner promo --}}
@@ -15,52 +44,23 @@
                     <!-- Carousel wrapper -->
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-full">
                         <!-- Item 1 -->
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        @foreach ($rekomendasi as $index => $item)
+                            @if ($index > 1)
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <a href="{{ route('artikel-show', $item->artikel->slug) }}">
+                                        <img src="{{ '/storage/' . $item->artikel->image }}"
+                                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                            alt="Tangsel Update">
+                                        <div
+                                            class="md:text-2xl text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-10 px-3 text-white font-medium rounded-b-lg">
+                                            {{ $item->artikel->nama }}
+                                        </div>
 
-                            <img src="https://storage.nu.or.id/storage/post/16_9/mid/nasaruddin-tegaskan-komitmen-bersihkan-kemenag-dari-korupsi_1733147394.webp"
-                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                alt="Tangsel Update">
-                            <div
-                                class="md:text-2xl text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-10 px-3 text-white font-medium rounded-b-lg">
-                                Benyamin: 16 Tahun Kota Tangsel, Refleksi dan Optimisme untuk Masa Depan
-                            </div>
+                                    </a>
 
-                        </div>
-                        <!-- Item 2 -->
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="https://tangerangupdate.com/wp-content/uploads/2024/11/Foto-website_20241125_131904_0000.png"
-                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                alt="Tangsel Update">
-
-                            <div
-                                class="md:text-2xl text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-10 px-3 text-white font-medium rounded-b-lg">
-                                PN Tangerang Gelar Sidang Praperadilan SP3 Kasus Dugaan Korupsi Pengadaan Lahan RSUD
-                                Tigaraksa
-                            </div>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="https://tangerangupdate.com/wp-content/uploads/2024/11/IMG-20241114-WA0009-1080x570.jpg"
-                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                alt="Tangsel Update">
-
-                            <div
-                                class="md:text-2xl text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-10 px-3 text-white font-medium rounded-b-lg">
-                                Kentang Berulah Lagi di Pamulang : Pentingnya Netralitas ASN dan Perangkat Kelurahan pada
-                                Pilkada 2024
-                            </div>
-
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="https://tangerangupdate.com/wp-content/uploads/2024/11/Foto-website_20241128_140901_0000.png"
-                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                alt="Tangsel Update">
-                            <div
-                                class="md:text-2xl text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-10 px-3 text-white font-medium rounded-b-lg">
-                                Pimpin Apel Pasca Cuti, Benyamin Tekankan ASN Jaga Independensi Jelang Pilkada 2024
-                            </div>
-                        </div>
+                                </div>
+                            @endif
+                        @endforeach
 
                     </div>
 
@@ -94,24 +94,33 @@
                 {{-- Carousel end --}}
             </div>
             <div class="md:col-span-5 col-span-12">
-                <div class="relative">
-                    <img src="https://tangerangupdate.com/wp-content/uploads/2023/04/kpkrafaelalun1_840x576.jpg"
-                        alt="Tangsel Update" class="h-52 w-full object-cover rounded-lg">
+                @if (isset($rekomendasi[0]))
+                    <div class="relative">
+                        <a href="{{ route('artikel-show', $rekomendasi[0]->artikel->slug) }}">
+                            <img src="/storage/{{ $rekomendasi[0]->artikel->image }}"
+                                alt="{{ $rekomendasi[0]->artikel->nama }}" class="h-52 w-full object-cover rounded-lg">
 
-                    <div
-                        class="md:text-base text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-8 px-3 text-white font-medium rounded-b-lg">
-                        Rafael Alun Trisambodo Ayah dari Mario Dandy Resmi Ditahan Atas Dugaan Gratifikasi
+                            <div
+                                class="md:text-base text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-8 px-3 text-white font-medium rounded-b-lg">
+                                {{ $rekomendasi[0]->artikel->nama }}
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="relative mt-3">
-                    <img src="https://tangerangupdate.com/wp-content/uploads/2024/11/Foto-website_20241128_141540_0000.png"
-                        alt="Tangsel Update" class="h-52 w-full object-cover rounded-lg">
+                @endif
+                @if (isset($rekomendasi[1]))
+                    <div class="relative mt-3">
+                        <a href="{{ route('artikel-show', $rekomendasi[1]->artikel->slug) }}">
+                            <img src="/storage/{{ $rekomendasi[1]->artikel->image }}"
+                                alt="{{ $rekomendasi[1]->artikel->nama }}" class="h-52 w-full object-cover rounded-lg">
 
-                    <div
-                        class="md:text-base text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-8 px-3 text-white font-medium rounded-b-lg">
-                        Benyamin: 16 Tahun Kota Tangsel, Refleksi dan Optimisme untuk Masa Depan
+                            <div
+                                class="md:text-base text-sm bg-gradient-to-t from-slate-950 to-transparent absolute bottom-0 w-full pb-3 pt-8 px-3 text-white font-medium rounded-b-lg">
+                                {{ $rekomendasi[1]->artikel->nama }}
+                            </div>
+                        </a>
                     </div>
-                </div>
+                @endif
+
             </div>
         </div>
 
@@ -183,7 +192,8 @@
             <div class="flex gap-4  w-full flex-shrink-0 pb-3">
                 @foreach ($lastArtikel as $item)
                     <a href="{{ route('artikel-show', $item->slug) }}" class="w-36 md:w-64 shrink-0">
-                        <img class="w-full inline-block h-auto object-cover rounded-lg" src="/storage/{{ $item->image }}">
+                        <img class="w-full inline-block h-auto object-cover rounded-lg"
+                            src="/storage/{{ $item->image }}">
                         <div class="">
                         </div>
                         <p class="text-primary text-xs my-2">

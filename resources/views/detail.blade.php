@@ -100,8 +100,7 @@
                 </div>
                 <div class="overflow-x-auto mt-5 ">
                     <div class="flex gap-4  w-full flex-shrink-0 pb-3" id="terkait">
-                        @for ($i = 0; $i < 8; $i++)
-                        @endfor
+
                     </div>
 
                 </div>
