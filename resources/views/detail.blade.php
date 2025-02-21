@@ -44,7 +44,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end mb-3 mt-2 md:mt-6">
+                    <div class="flex items-center justify-end mb-3 mt-0 md:mt-6">
 
                         <div class="share-wrapper flex items-center gap-2 cursor-pointer">
 
