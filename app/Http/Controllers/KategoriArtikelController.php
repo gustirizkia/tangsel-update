@@ -19,9 +19,14 @@ class KategoriArtikelController extends Controller
             $item->tanggal = Carbon::parse($item->created_at)->format("d M Y");
         }
 
+        $artikelLainnya = Artikel::whereNotIn("id", $artikel->pluck("id")->toArray())
+            ->inRandomOrder()
+            ->limit(10)->get();
+
         return view("kategori", [
             'kategori' => $kategori,
-            "artikel" => $artikel
+            "artikel" => $artikel,
+            "artikelLainnya" => $artikelLainnya
         ]);
     }
 }

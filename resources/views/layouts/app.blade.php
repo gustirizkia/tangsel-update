@@ -31,7 +31,7 @@
         @yield('content')
     </main>
 
-    @include('components.footer')
+    <x-footer />
     @stack('addScript')
 </body>
 

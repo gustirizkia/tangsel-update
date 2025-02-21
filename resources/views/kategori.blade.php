@@ -57,42 +57,43 @@
                 </div>
 
             </div>
-            <div class="md:col-span-4 col-span-12">
-                <div class="border p-4 rounded-md">
-                    <div class=" border-l-4 border-primary pl-3">
-                        <div class="font-semibold text-primary text-lg ">
-                            TERPOPULER
+            @if (count($artikelLainnya))
+                <div class="md:col-span-4 col-span-12">
+                    <div class="border p-4 rounded-md">
+                        <div class=" border-l-4 border-primary pl-3">
+                            <div class="font-semibold text-primary text-lg ">
+                                Artikel Lainnya
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            @foreach ($artikelLainnya as $item)
+                                <a href="/detail" class="flex items-center gap-3 mt-5">
+                                    <div class="flex-shrink-0">
+                                        <img src="{{ url("/storage/$item->image") }}"
+                                            class="md:w-32 md:h-auto h-20 w-20 object-cover rounded" alt="">
+                                    </div>
+                                    <div class="">
+                                        <div class="md:text-sm text-xs font-medium">
+                                            {{ $item->nama }}
+                                        </div>
+                                        <div class="flex gap-2 mt-2 items-center justify-between w-full">
+                                            <div class="text-xs text-primary">
+                                                {{ $item->kategori->nama }}
+                                            </div>
+
+                                            <div class="text-xs text-gray-400">
+                                                22 Oktober 2024
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            @endforeach
+
                         </div>
                     </div>
-                    <div class="mt-2">
-                        @for ($i = 1; $i < 7; $i++)
-                            <a href="/detail" class="flex items-center gap-3 mt-5">
-                                <div class="flex-shrink-0">
-                                    <img src="https://tangerangupdate.com/wp-content/uploads/2024/11/Foto-website_20241128_140901_0000.png"
-                                        class="md:w-32 md:h-auto h-20 w-20 object-cover rounded" alt="">
-                                </div>
-                                <div class="">
-                                    <div class="md:text-sm text-xs font-medium">
-                                        Rafael Alun Trisambodo Ayah dari Mario Dandy Resmi Ditahan Atas Dugaan Gratifikasi
-                                    </div>
-                                    <div class="flex gap-2 mt-2 items-center">
-                                        <div class="text-xs text-primary">
-                                            NASIONAL
-                                        </div>
-                                        <div class="">
-                                            |
-                                        </div>
-                                        <div class="text-xs text-gray-400">
-                                            22 Oktober 2024
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </a>
-                        @endfor
-                    </div>
                 </div>
-            </div>
+            @endif
         </div>
         {{-- Terkini end --}}
     </div>
