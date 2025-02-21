@@ -41,4 +41,19 @@ class ArtikelController extends Controller
             "artikelLainnya" => $artikelLainnya
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $artikel = Artikel::where("nama", "LIKE", "%$request->q%")->paginate(18);
+
+        foreach ($artikel as $item) {
+            $item->tanggal = Carbon::parse($item->created_at)->format("d M Y");
+        }
+
+        $artikelLainnya = Artikel::whereNotIn("id", $artikel->pluck("id")->toArray())
+            ->inRandomOrder()
+            ->limit(10)->get();
+
+        return view("search-artikel", compact("artikelLainnya", "artikel"));
+    }
 }

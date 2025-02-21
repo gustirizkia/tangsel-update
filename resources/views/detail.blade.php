@@ -33,17 +33,20 @@
 
                 <img src="{{ url("storage/$artikel->image") }}" alt="Tangsel Update" class="w-full h-auto rounded-lg">
                 <div class="md:my-7 my-4">
-                    <h1 class="md:text-2xl text-lg font-semibold ">
-                        {{ $artikel->nama }}
-                    </h1>
-
-                    <div class="flex items-center justify-between mb-3" data-v-70a3ce7f="">
-                        <div class="date" data-v-70a3ce7f="">
-                            <p class="text-sm text-[#616161] dark:text-white" data-v-70a3ce7f="">
+                    <div class="">
+                        <h1 class="md:text-2xl text-lg font-semibold ">
+                            {{ $artikel->nama }}
+                        </h1>
+                        <div class="date">
+                            <p class="text-sm text-[#616161] dark:text-white">
                                 {{ $artikel->tanggal }}
                             </p>
                         </div>
-                        <div class="share-wrapper flex items-center gap-2 cursor-pointer" data-v-70a3ce7f="">
+                    </div>
+
+                    <div class="flex items-center justify-end mb-3 mt-6">
+
+                        <div class="share-wrapper flex items-center gap-2 cursor-pointer">
 
                             <a href="https://wa.me/?text=https://narasi.tv/video/narasi-explains/sisi-lain-fans-k-pop-militan-ikut-protes-politik%3Futm_source=whatsapp%26utm_medium=share"
                                 target="_blank" rel="noopener"

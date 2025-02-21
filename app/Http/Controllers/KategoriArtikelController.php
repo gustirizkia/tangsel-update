@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 
 class KategoriArtikelController extends Controller
 {
-    public function index(Request $request, $slug)
+    public function index(Request $request, $slug, $child = null)
     {
-        $kategori = ArtikelKategori::where("slug", $slug)->firstOrFail();
+        $kategori_slug = $child ?? $slug;
+        $kategori = ArtikelKategori::where("slug", $kategori_slug)->firstOrFail();
 
         $artikel = Artikel::where("kategori_id", $kategori->id)->paginate(18);
 

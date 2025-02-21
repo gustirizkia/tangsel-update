@@ -67,7 +67,7 @@
                         </div>
                         <div class="mt-2">
                             @foreach ($artikelLainnya as $item)
-                                <a href="/detail" class="flex items-center gap-3 mt-5">
+                                <a href="{{ route('artikel-show', $item->slug) }}" class="flex items-center gap-3 mt-5">
                                     <div class="flex-shrink-0">
                                         <img src="{{ url("/storage/$item->image") }}"
                                             class="md:w-32 md:h-auto h-20 w-20 object-cover rounded" alt="">

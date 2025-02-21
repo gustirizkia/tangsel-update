@@ -3,9 +3,25 @@
         <a href="/" class="text-red-700 ">
             <img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo Tangsel Update" class="w-20">
         </a>
-        <div class="ml-auto md:hidden">
-            <input type="text" placeholder="Cari " class="h-9 border-gray-400 rounded-full text-xs w-full">
+        <div class="ml-auto md:hidden w-[70%]">
+            <form action="{{ route('search') }}" method="get">
+                <label for="search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
 
+                    <input type="search" id="search"
+                        class="block w-full p-2  text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                        placeholder="Cari . . ." name="q" value="{{ request()->q }}" />
+                    <button type="submit"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 dark:bg-primary dark:hover:bg-blue-700 dark:focus:ring-primary">
+                        <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     {{-- Navlink --}}
@@ -23,7 +39,9 @@
             @else
                 {{-- Dropdown --}}
                 <button id="dropdownDefaultButton{{ $idxKategori }}" data-dropdown-toggle="dropdown"
-                    class="text-center inline-flex items-center font-bold text-sm  text-black dark:text-white whitespace-nowrap uppercase h-full"
+                    class="text-center inline-flex items-center font-bold text-sm  text-black dark:text-white whitespace-nowrap uppercase 
+                    h-full
+                    {{ request()->is("kategori/$item_kategori_artikel_nav->slug*") ? 'border-b-2 text-primary border-primary' : '' }}"
                     type="button">{{ $item_kategori_artikel_nav->nama }}
                     <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
@@ -38,8 +56,8 @@
                         aria-labelledby="dropdownDefaultButton{{ $idxKategori }}">
                         @foreach ($item_kategori_artikel_nav->child as $item)
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $item->nama }}</a>
+                                <a href="/kategori/{{ $item_kategori_artikel_nav->slug }}/{{ $item->slug }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white {{ request()->is("kategori/$item_kategori_artikel_nav->slug/$item->slug") ? 'text-primary' : '' }}">{{ $item->nama }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -50,9 +68,27 @@
 
 
     </div>
+
     {{-- Navlink end --}}
     <div class="ml-auto md:block hidden">
-        <input type="text" placeholder="Cari " class="h-9 border-gray-400 rounded-full text-xs">
+
+        <form action="{{ route('search') }}" method="get">
+            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+
+                <input type="search" id="search"
+                    class="block w-full p-3  text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                    placeholder="Cari . . ." name="q" value="{{ request()->q }}" />
+                <button type="submit"
+                    class="text-white absolute end-2.5 bottom-2.5 bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2 dark:bg-primary dark:hover:bg-blue-700 dark:focus:ring-primary">
+                    <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </button>
+            </div>
+        </form>
 
     </div>
 </div>

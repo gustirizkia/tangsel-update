@@ -22,8 +22,9 @@ Route::get('/detail', function () {
     return view('detail');
 });
 
-Route::get("kategori/{slug}", [KategoriArtikelController::class, "index"])->name("kategori-artikel");
+Route::get("kategori/{slug}/{child?}", [KategoriArtikelController::class, "index"])->name("kategori-artikel");
 Route::post("artikel-data", [ArtikelController::class, "data"])->name("artikel-data");
 Route::get("artikel/{slug}", [ArtikelController::class, "show"])->name("artikel-show");
 
 Route::get("page/{slug}", [PageController::class, "show"])->name("page.show");
+Route::get("cari-data", [ArtikelController::class, "search"])->name("search");
