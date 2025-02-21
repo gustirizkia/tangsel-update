@@ -16,7 +16,7 @@
                 <section id="artikel">
 
                     @forelse ($artikel as $item)
-                        <a href="${element.url}" class="mt-6 mb-5 flex items-center">
+                        <a href="{{ route('artikel-show', $item->slug) }}" class="mt-6 mb-5 flex items-center">
                             <div class="mr-4 flex-shrink-0">
                                 <img src="{{ url('storage') }}/{{ $item->image }}" class="md:w-36 w-28 h-auto rounded-lg ">
                             </div>
