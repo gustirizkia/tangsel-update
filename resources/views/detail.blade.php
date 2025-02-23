@@ -125,7 +125,7 @@
                         TERKAIT
                     </div>
                 </div>
-                <div class="overflow-x-auto mt-5 ">
+                <div class="overflow-x-auto scrollbar-hide mt-5 ">
                     <div class="flex gap-4  w-full flex-shrink-0 pb-3" id="terkait">
 
                     </div>
