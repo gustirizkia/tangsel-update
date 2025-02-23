@@ -16,7 +16,6 @@ return new class extends Migration
             $table->bigInteger("kategori_id");
             $table->string("slug");
             $table->string("image");
-            $table->string("keterangan_gambar")->nullable();
             $table->string("nama");
             $table->string("keyword");
             $table->longText("content");
