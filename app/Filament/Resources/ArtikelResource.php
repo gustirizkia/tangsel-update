@@ -9,6 +9,7 @@ use App\Models\ArtikelKategori;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -26,8 +27,8 @@ class ArtikelResource extends Resource
     protected static ?string $model = Artikel::class;
 
     protected static ?string $navigationGroup = 'Artikel';
-    protected static ?string $navigationLabel = 'Kontent';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Post Kontent';
+    // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -39,21 +40,35 @@ class ArtikelResource extends Resource
                             ->required()
                             ->image()
                             ->columnSpan(2),
+                        TextInput::make("keterangan_gambar")
+                            ->label("Keterangan Gambar")
+                            ->columnSpan(2),
                         TextInput::make("nama")
                             ->required()
                             ->string(),
 
                         Select::make("kategori_id")
                             ->label("Kategori")
-                            ->required()
-                            ->options(ArtikelKategori::all()->pluck("nama", "id"))
-                            ->searchable()
                             ->relationship("kategori", 'nama')
+                            ->required()
+                            ->searchable()
+                            ->preload()
                             ->createOptionForm([
                                 TextInput::make("nama")
                                     ->required()
                                     ->string()
                             ]),
+
+                        Select::make('tags')
+                            ->multiple()
+                            ->relationship('tags', 'nama')
+                            ->preload()
+                            ->createOptionForm([
+                                TextInput::make("nama")
+                                    ->required()
+                                    ->string()
+                            ])
+                            ->label('Tag'),
                         TextInput::make("keyword")
                             ->required()
                             ->string()
@@ -87,10 +102,16 @@ class ArtikelResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama')->searchable(),
-                TextColumn::make('kategori.nama')->label("Kategori"),
+                TextColumn::make('nama')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('kategori.nama')
+                    ->sortable()
+                    ->label("Kategori"),
                 ImageColumn::make("image"),
-                TextColumn::make('created_at')->label("Tanggal dibuat"),
+                TextColumn::make('created_at')
+                    ->sortable()
+                    ->label("Tanggal dibuat"),
             ])
             ->filters([
                 //

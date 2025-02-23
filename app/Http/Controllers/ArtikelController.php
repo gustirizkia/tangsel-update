@@ -29,7 +29,7 @@ class ArtikelController extends Controller
 
     public function show($slug)
     {
-        $artikel = Artikel::where("slug", $slug)->firstOrFail();
+        $artikel = Artikel::where("slug", $slug)->with("tags")->firstOrFail();
         $artikel->tanggal = Carbon::parse($artikel->created_at)->format("d M Y");
 
         $artikelLainnya = Artikel::where("id", "!=", $artikel->id)

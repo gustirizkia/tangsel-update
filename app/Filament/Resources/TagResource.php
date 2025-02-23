@@ -2,12 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ArtikelRekomendasiResource\Pages;
-use App\Filament\Resources\ArtikelRekomendasiResource\RelationManagers;
-use App\Models\Artikel;
-use App\Models\ArtikelRekomendasi;
+use App\Filament\Resources\TagResource\Pages;
+use App\Filament\Resources\TagResource\RelationManagers;
+use App\Models\Tag;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -16,26 +15,22 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ArtikelRekomendasiResource extends Resource
+class TagResource extends Resource
 {
-    protected static ?string $model = ArtikelRekomendasi::class;
+    protected static ?string $model = Tag::class;
 
     protected static ?string $navigationGroup = 'Artikel';
-    protected static ?string $navigationLabel = 'Artikel Rekomendasi';
+    protected static ?string $navigationLabel = 'Tag';
     // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
-        $ArtikelRekomendasi = ArtikelRekomendasi::get()->pluck("artikel_id");
         return $form
             ->schema([
-                Select::make('artikel_id')
-                    ->label('Artikel')
+                TextInput::make('nama')
+                    ->label("Nama Tag")
                     ->required()
-                    ->options(Artikel::whereNotIn("id", $ArtikelRekomendasi)->get()->pluck("nama", "id"))
-                    ->searchable()
-                    ->columnSpan(2),
-
+                    ->unique(),
             ]);
     }
 
@@ -43,13 +38,20 @@ class ArtikelRekomendasiResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make("artikel.nama")->label("Artikel"),
+                TextColumn::make("nama")
+                    ->searchable()
+                    ->sortable()
+                    ->label("Nama Tag"),
+                TextColumn::make("created_at")
+                    ->sortable()
+                    ->label("Tanggal dibuat"),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
@@ -59,10 +61,19 @@ class ArtikelRekomendasiResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageArtikelRekomendasis::route('/'),
+            'index' => Pages\ListTags::route('/'),
+            'create' => Pages\CreateTag::route('/create'),
+            'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
     }
 }

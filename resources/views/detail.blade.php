@@ -23,6 +23,10 @@
     <meta property="twitter:description" content="{{ $artikel->keyword }}" />
     <meta property="twitter:image" content="{{ url('storage/') . "/$artikel->image" }}" />
 
+    @if (count($artikel->tags))
+        <meta name="content_tags" content="{{ implode(', ', $artikel->tags->pluck('nama')->toArray()) }}">
+    @endif
+
     <!-- Meta Tags Generated with https://metatags.io -->
 @endpush
 
@@ -44,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end mb-3 mt-0 md:mt-6">
+                    {{-- <div class="flex items-center justify-end mb-3 mt-0 md:mt-6">
 
                         <div class="share-wrapper flex items-center gap-2 cursor-pointer">
 
@@ -87,13 +91,33 @@
                             <div class="text-xs text-[#1a1a1a] dark:text-white py-[6px] px-3 rounded-full border border-[#1a1a1a] dark:border-white"
                                 data-v-70a3ce7f=""> Copy Link </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
 
                 <div class="mt-3">
                     {!! $artikel->content !!}
                 </div>
+
+                @if (count($artikel->tags))
+                    <div class="my-12">
+                        <div class="md:text-xl font-semibold">
+                            Tags
+                        </div>
+
+                        <div class="overflow-x-auto scrollbar-hide">
+                            <div class="mt-4 flex gap-2 md:gap-4">
+                                @foreach ($artikel->tags as $tag)
+                                    <a href=""
+                                        class="bg-primary shrink-0 hover:bg-cyan-400 text-white md:px-4 md:py-2 px-3 py-1 rounded-full md:text-sm text-xs">
+                                        {{ $tag->nama }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+
+                    </div>
+                @endif
 
                 {{-- carousel --}}
                 <div class=" border-l-4 border-primary pl-3 mt-5">

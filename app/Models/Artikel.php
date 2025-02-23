@@ -24,6 +24,11 @@ class Artikel extends Model
         return $this->belongsTo(ArtikelKategori::class, "kategori_id", "id");
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, "artikel_tags");
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -31,7 +36,7 @@ class Artikel extends Model
         //while creating/inserting item into db
         static::creating(function ($model) {
 
-            $model->slug = Str::slug($model->nama);
+            $model->slug = Str::slug(title: $model->nama);
         });
 
         static::updating(function ($model) {

@@ -25,7 +25,7 @@
         </div>
     </div>
     {{-- Navlink --}}
-    <div class=" flex font-medium gap-6 md:ml-4 overflow-x-auto md:pb-0 pb-2">
+    <div class=" flex font-medium gap-6 md:ml-4 overflow-x-scroll scrollbar-hide no-scrollbar md:pb-0 pb-2 pr-4">
         <a href="/"
             class="flex items-center font-bold text-sm  text-black dark:text-white whitespace-nowrap uppercase h-full {{ request()->is('/') ? 'border-b-2 text-primary border-primary' : '' }}">
             HOME
@@ -65,10 +65,7 @@
                 {{-- Dropdownend --}}
             @endif
         @endforeach
-
-
     </div>
-
     {{-- Navlink end --}}
     <div class="ml-auto md:block hidden">
 
@@ -92,3 +89,20 @@
 
     </div>
 </div>
+
+
+@push('addScript')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cari elemen dengan class yang menunjukkan elemen aktif
+            const activeElement = document.querySelector('.border-b-2');
+            if (activeElement) {
+                // Scroll elemen aktif ke tengah tampilan horizontal
+                activeElement.scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center'
+                });
+            }
+        });
+    </script>
+@endpush

@@ -23,7 +23,7 @@ class ArtikelKategoriResource extends Resource
     protected static ?string $navigationGroup = 'Artikel';
     protected static ?string $navigationLabel = 'Kategori';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
