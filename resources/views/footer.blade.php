@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="md:px-60 px-3 mt-8">
+    <div class="md:px-96 px-3 mt-8">
         <img src="{{ url("storage/$page->image") }}" alt="Tangsel Update {{ $page->nama }}" class="w-full h-auto rounded-lg">
 
         <div class="mt-6">
