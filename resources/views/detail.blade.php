@@ -36,6 +36,9 @@
             <div class="md:w-[60%]">
 
                 <img src="{{ url("storage/$artikel->image") }}" alt="Tangsel Update" class="w-full h-auto rounded-lg">
+                <div class="text-center w-full text-gray-500 italic text-sm mt-1">
+                    {{ $artikel->keterangan_gambar }}
+                </div>
                 <div class="md:my-7 my-4">
                     <div class="">
                         <h1 class="md:text-2xl text-lg font-semibold ">
